@@ -1,0 +1,1 @@
+This is an end to end deep learning project to recognize handwritten or printed english text
