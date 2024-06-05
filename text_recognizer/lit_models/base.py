@@ -72,7 +72,7 @@ class BaseLitModel(pl.LightningModule):  # pylint: disable=too-many-ancestors
     def forward(self, x):
         return self.model(x)
 
-    def training_step(self, batch, batch_idx):  # pylint: disable=unused-argument
+    def training_step(self, batch, batch_idx):  
         x, y = batch
         logits = self(x)
         loss = self.loss_fn(logits, y)
@@ -81,7 +81,7 @@ class BaseLitModel(pl.LightningModule):  # pylint: disable=too-many-ancestors
         self.log("train_acc", self.train_acc, on_step=False, on_epoch=True)
         return loss
 
-    def validation_step(self, batch, batch_idx):  # pylint: disable=unused-argument
+    def validation_step(self, batch, batch_idx):  
         x, y = batch
         logits = self(x)
         loss = self.loss_fn(logits, y)
@@ -89,7 +89,7 @@ class BaseLitModel(pl.LightningModule):  # pylint: disable=too-many-ancestors
         self.val_acc(logits, y)
         self.log("val_acc", self.val_acc, on_step=False, on_epoch=True, prog_bar=True)
 
-    def test_step(self, batch, batch_idx):  # pylint: disable=unused-argument
+    def test_step(self, batch, batch_idx): 
         x, y = batch
         logits = self(x)
         self.test_acc(logits, y)
